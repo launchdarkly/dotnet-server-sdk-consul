@@ -86,6 +86,9 @@ namespace LaunchDarkly.Client.Consul
         /// Specifies an existing, already-configured Consul client instance that the feature store
         /// should use rather than creating one of its own. If you specify an existing client, then the
         /// other builder methods for configuring Consul are ignored.
+        ///
+        /// Note that the LaunchDarkly code will take ownership of this ConsulClient instance, and will
+        /// call Dispose on it if the LaunchDarkly client is disposed of.
         /// </summary>
         /// <param name="client">an existing Consul client instance</param>
         /// <returns>the builder</returns>
