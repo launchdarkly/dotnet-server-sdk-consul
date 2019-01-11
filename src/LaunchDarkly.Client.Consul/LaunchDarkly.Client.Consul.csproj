@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+    <PackageId>LaunchDarkly.Client.Consul</PackageId>
+    <AssemblyName>LaunchDarkly.Client.Consul</AssemblyName>
+    <TargetFrameworks>netstandard1.6;netstandard2.0;net45</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <Description>LaunchDarkly .NET Client Consul Integration</Description>
+    <Company>LaunchDarkly</Company>
+    <Copyright>Copyright 2018 Catamorphic, Co.</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/launchdarkly/dotnet-client-consul/master/LICENSE</PackageLicenseUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Consul" Version="0.7.2.6" />
+    <PackageReference Include="LaunchDarkly.Client" Version="5.6.0" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\LaunchDarkly.Client.Consul.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>../../LaunchDarkly.Consul.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+</Project>
