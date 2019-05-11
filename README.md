@@ -1,6 +1,6 @@
 LaunchDarkly SDK for .NET - Consul integration
 =============================================
-[![CircleCI](https://circleci.com/gh/launchdarkly/dotnet-client-consul.svg?style=svg)](https://circleci.com/gh/launchdarkly/dotnet-client-consul)
+[![CircleCI](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul.svg?style=svg)](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul)
 
 This library provides a Consul-backed persistence mechanism (feature store) for the [LaunchDarkly .NET SDK](https://github.com/launchdarkly/dotnet-client), replacing the default in-memory feature store. It uses [this open-source Consul client library](https://github.com/PlayFab/consuldotnet).
 
