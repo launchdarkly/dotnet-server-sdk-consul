@@ -2,15 +2,20 @@
 
 [![CircleCI](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul.svg?style=svg)](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul)
 
-This library provides a Consul-backed persistence mechanism (feature store) for the [LaunchDarkly server-side .NET SDK](https://github.com/launchdarkly/dotnet-server-sdk), replacing the default in-memory feature store. It uses [this open-source Consul client library](https://github.com/PlayFab/consuldotnet).
+This library provides a Consul-backed persistence mechanism (data store) for the [LaunchDarkly server-side .NET SDK](https://github.com/launchdarkly/dotnet-server-sdk), replacing the default in-memory data store. It uses [this open-source Consul client library](https://github.com/PlayFab/consuldotnet).
 
-The minimum version of the LaunchDarkly server-side .NET SDK for use with this library is 5.6.4.
+For more information, see also: [Using a persistent data store](https://docs.launchdarkly.com/v2.0/docs/using-a-persistent-feature-store).
 
-For more information, see also: [Using a persistent feature store](https://docs.launchdarkly.com/v2.0/docs/using-a-persistent-feature-store).
+Version 2.0.0 and above of this library works with version 6.0.0 and above of the LaunchDarkly .NET SDK. For earlier versions of the SDK, use the latest 1.x release of this library.
 
-## .NET platform compatibility
+## Supported .NET versions
 
-This version of the library is compatible with .NET Framework version 4.5 and above, .NET Standard 1.6, and .NET Standard 2.0.
+This version of the library is built for the following targets:
+
+* .NET Framework 4.5.2: runs on .NET Framework 4.5.x and above.
+* .NET Standard 2.0: runs on .NET Core 2.x and 3.x, or .NET 5, in an application; or within a library that is targeted to .NET Standard 2.x or .NET 5.
+
+The .NET build tools should automatically load the most appropriate build of the library for whatever platform your application or library is targeted to.
 
 ## Quick setup
 
@@ -20,53 +25,52 @@ This version of the library is compatible with .NET Framework version 4.5 and ab
 
 2. Import the package (note that the namespace is different from the package name):
 
-        using LaunchDarkly.Client.Consul;
+        using LaunchDarkly.Sdk.Server.Integrations;
 
-3. When configuring your `LDClient`, add the Consul feature store:
+3. When configuring your `LdClient`, add the Consul data store as a `PersistentDataStore`. You may specify any custom Consul options using the methods of `ConsulDataStoreBuilder`. For instance, to customize the Redis URI:
 
-        Configuration ldConfig = Configuration.Default("YOUR_SDK_KEY")
-            .WithFeatureStoreFactory(ConsulComponents.ConsulFeatureStore());
-        LdClient ldClient = new LdClient(ldConfig);
+        var ldConfig = Configuration.Default("YOUR_SDK_KEY")
+            .DataStore(
+                Components.PersistentDataStore(
+                    Consul.DataStore().Address("http://my-consul-host:8500")
+                )
+            )
+            .Build();
+        var ldClient = new LdClient(ldConfig);
 
-4. Optionally, you can change the Consul configuration by calling methods on the builder returned by `ConsulFeatureStore()`:
+By default, the store will try to connect to a local Consul instance on port 8500.
 
-        Configuration ldConfig = Configuration.Default("YOUR_SDK_KEY")
-            .WithFeatureStoreFactory(
-                ConsulComponents.ConsulFeatureStore()
-                    .WithAddress(new Uri("http://my-consul-host:8500"))
-            );
-        LdClient ldClient = new LdClient(ldConfig);
+## How the SDK uses Consul
 
-5. If you are running a [LaunchDarkly Relay Proxy](https://github.com/launchdarkly/ld-relay) instance, you can use it in [daemon mode](https://github.com/launchdarkly/ld-relay#daemon-mode), so that the SDK retrieves flag data only from Redis and does not communicate directly with LaunchDarkly. This is controlled by the SDK's `UseLdd` option:
+The Consul integrations for all LaunchDarkly server-side SDKs use the same conventions, so that SDK instances and Relay Proxy instances sharing a single Consul store can interoperate correctly. The storage schema is as follows:
 
-        Configuration ldConfig = Configuration.Default("YOUR_SDK_KEY")
-            .WithFeatureStoreFactory(ConsulComponents.ConsulFeatureStore())
-            .WithUseLdd(true);
-        LdClient ldClient = new LdClient(ldConfig);
+* There is always a "prefix" string that provides a namespace for the overall data set. If you do not specify a prefix in your configuration, it is `launchdarkly`.
+
+* For each data item that the SDK can store, such as a feature flag, there is a Consul key-value pair where the key is `PREFIX/TYPE/KEY`. `PREFIX` is the configured prefix string. `TYPE` denotes the type of data; currently, the types are `features` and `segments`, but this is subject to change in the future. `KEY` is the unique key of the item (such as the flag key for a feature flag). The value is a serialized representation of that item, in a format that is determined by the SDK.
+
+* An additional key, `PREFIX/$inited`, is created with an arbitrary value when the SDK stores a full set of feature flag data. This allows a new SDK instance to check whether there is already a valid data set that was stored earlier.
+
+* The SDK will never add, modify, or remove any keys in Consul other than the ones described above, so it is safe to share a Consul instance that is also being used for other purposes.
 
 ## Caching behavior
 
-To reduce traffic to Consul, there is an optional in-memory cache that retains the last known data for a configurable amount of time. This is on by default; to turn it off (and guarantee that the latest feature flag data will always be retrieved from Consul for every flag evaluation), configure the builder as follows:
+The LaunchDarkly SDK has a standard caching mechanism for any persistent data store, to reduce database traffic. This is configured through the SDK's `PersistentDataStoreBuilder` class as described the SDK documentation. For instance, to specify a cache TTL of 5 minutes:
 
-                ConsulComponents.ConsulFeatureStore()
-                    .WithCaching(FeatureStoreCacheConfig.Disabled)
-
-Or, to cache for longer than the default of 30 seconds:
-
-                ConsulComponents.ConsulFeatureStore()
-                    .WithCaching(FeatureStoreCacheConfig.Enabled.WithTtlSeconds(60))
+        var config = Configuration.Default("YOUR_SDK_KEY")
+            .DataStore(
+                Components.PersistentDataStore(
+                    Consul.DataStore().Address("http://my-consul-host:8500")
+                ).CacheTime(TimeSpan.FromMinutes(5))
+            )
+            .Build();
 
 ## Signing
 
 The published version of this assembly is strong-named. Building the code locally in the default Debug configuration does not use strong-naming and does not require a key file.
 
-## Development notes
+## Contributing
 
-This project imports the `dotnet-base` and `dotnet-server-sdk-shared-tests` repositories as subtrees. See the `README.md` file in each of those directories for more information.
-
-To run unit tests, you must have a local Consul server. More information [here](https://learn.hashicorp.com/consul/getting-started/install).
-
-Releases are done using the release script in `dotnet-base`. Since the published package includes a .NET Framework 4.5 build, the release must be done from Windows.
+See [Contributing](./CONTRIBUTING.md).
 
 ## About LaunchDarkly
  
