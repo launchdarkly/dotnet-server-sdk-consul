@@ -284,7 +284,9 @@ namespace LaunchDarkly.Sdk.Server.SharedTests.DataStore
             // so that it won't interfere with data from some other instance with a different
             // prefix. This test verifies that Init, Get, All, and Upsert are all respecting
             // the prefix.
-            await ClearAllData();
+            await ClearAllData("aaa");
+            await ClearAllData("bbb");
+
             using (var store1 = CreateStoreImpl("aaa"))
             {
                 using (var store2 = CreateStoreImpl("bbb"))
