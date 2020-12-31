@@ -31,7 +31,7 @@ namespace LaunchDarkly.Sdk.Server.Integrations
     ///         .DataStore(
     ///             Components.PersistentDataStore(
     ///                 Consul.DataStore()
-    ///                     .Address("http://my-consul-host:8500"))
+    ///                     .Address("http://my-consul-host:8500")
     ///                     .Prefix("app1")
     ///                 )
     ///                 .CacheSeconds(15)
