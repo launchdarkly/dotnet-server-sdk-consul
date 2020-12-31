@@ -40,18 +40,6 @@ The .NET build tools should automatically load the most appropriate build of the
 
 By default, the store will try to connect to a local Consul instance on port 8500.
 
-## How the SDK uses Consul
-
-The Consul integrations for all LaunchDarkly server-side SDKs use the same conventions, so that SDK instances and Relay Proxy instances sharing a single Consul store can interoperate correctly. The storage schema is as follows:
-
-* There is always a "prefix" string that provides a namespace for the overall data set. If you do not specify a prefix in your configuration, it is `launchdarkly`.
-
-* For each data item that the SDK can store, such as a feature flag, there is a Consul key-value pair where the key is `PREFIX/TYPE/KEY`. `PREFIX` is the configured prefix string. `TYPE` denotes the type of data; currently, the types are `features` and `segments`, but this is subject to change in the future. `KEY` is the unique key of the item (such as the flag key for a feature flag). The value is a serialized representation of that item, in a format that is determined by the SDK.
-
-* An additional key, `PREFIX/$inited`, is created with an arbitrary value when the SDK stores a full set of feature flag data. This allows a new SDK instance to check whether there is already a valid data set that was stored earlier.
-
-* The SDK will never add, modify, or remove any keys in Consul other than the ones described above, so it is safe to share a Consul instance that is also being used for other purposes.
-
 ## Caching behavior
 
 The LaunchDarkly SDK has a standard caching mechanism for any persistent data store, to reduce database traffic. This is configured through the SDK's `PersistentDataStoreBuilder` class as described the SDK documentation. For instance, to specify a cache TTL of 5 minutes:
@@ -63,6 +51,18 @@ The LaunchDarkly SDK has a standard caching mechanism for any persistent data st
                 ).CacheTime(TimeSpan.FromMinutes(5))
             )
             .Build();
+
+## How the SDK uses Consul
+
+The Consul integrations for all LaunchDarkly server-side SDKs use the same conventions, so that SDK instances and Relay Proxy instances sharing a single Consul store can interoperate correctly. The storage schema is as follows:
+
+* There is always a "prefix" string that provides a namespace for the overall data set. If you do not specify a prefix in your configuration, it is `launchdarkly`.
+
+* For each data item that the SDK can store, such as a feature flag, there is a Consul key-value pair where the key is `PREFIX/TYPE/KEY`. `PREFIX` is the configured prefix string. `TYPE` denotes the type of data; currently, the types are `features` and `segments`, but this is subject to change in the future. `KEY` is the unique key of the item (such as the flag key for a feature flag). The value is a serialized representation of that item, in a format that is determined by the SDK.
+
+* An additional key, `PREFIX/$inited`, is created with an arbitrary value when the SDK stores a full set of feature flag data. This allows a new SDK instance to check whether there is already a valid data set that was stored earlier.
+
+* The SDK will never add, modify, or remove any keys in Consul other than the ones described above, so it is safe to share a Consul instance that is also being used for other purposes.
 
 ## Signing
 
