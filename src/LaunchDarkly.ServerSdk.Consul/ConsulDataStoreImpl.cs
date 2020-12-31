@@ -50,6 +50,8 @@ namespace LaunchDarkly.Sdk.Server.Integrations
             _wasExistingClient = wasExistingClient;
             _prefix = String.IsNullOrEmpty(prefix) ? "" : (prefix + "/");
             _log = log;
+            _log.Info("Using Consul data store at {0} with prefix \"{1}\"",
+                client.Config.Address, prefix);
         }
         
         public async Task<bool> InitializedAsync()

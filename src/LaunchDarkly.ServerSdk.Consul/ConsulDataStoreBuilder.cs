@@ -141,14 +141,11 @@ namespace LaunchDarkly.Sdk.Server.Integrations
                 });
             }
 
-            context.Basic.Logger.Info("Creating Consul data store using host at {0}",
-                client.Config.Address);
-
             return new ConsulDataStoreImpl(
                 client,
                 _existingClient != null,
                 _prefix,
-                context.Basic.Logger
+                context.Basic.Logger.SubLogger("DataStore.Consul")
                 );
         }
     }
