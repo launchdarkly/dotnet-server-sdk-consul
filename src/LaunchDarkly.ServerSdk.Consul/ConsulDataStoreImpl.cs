@@ -102,7 +102,7 @@ namespace LaunchDarkly.Sdk.Server.Integrations
 
             await BatchOperationsAsync(ops);
 
-            _log.Info("Initialized database with {0} items", numItems);
+            _log.Info("Initialized data store with {0} items", numItems);
         }
 
         public async Task<SerializedItemDescriptor?> GetAsync(DataKind kind, string key)
