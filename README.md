@@ -42,7 +42,7 @@ By default, the store will try to connect to a local Consul instance on port 850
 
 ## Caching behavior
 
-The LaunchDarkly SDK has a standard caching mechanism for any persistent data store, to reduce database traffic. This is configured through the SDK's `PersistentDataStoreBuilder` class as described the SDK documentation. For instance, to specify a cache TTL of 5 minutes:
+The LaunchDarkly SDK has a standard caching mechanism for any persistent data store, to reduce database traffic. This is configured through the SDK's `PersistentDataStoreBuilder` class as described in the SDK documentation. For instance, to specify a cache TTL of 5 minutes:
 
         var config = Configuration.Default("YOUR_SDK_KEY")
             .DataStore(
