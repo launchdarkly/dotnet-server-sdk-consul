@@ -16,7 +16,7 @@ namespace LaunchDarkly.Sdk.Server.Integrations
         /// </summary>
         /// <remarks>
         /// This object can be modified with <see cref="ConsulDataStoreBuilder"/> methods for any desired
-        /// custom Redis options. Then, pass it to <see cref="Components.PersistentDataStore(Interfaces.IPersistentDataStoreAsyncFactory)"/>
+        /// custom Consul options. Then, pass it to <see cref="Components.PersistentDataStore(Interfaces.IPersistentDataStoreAsyncFactory)"/>
         /// and set any desired caching options. Finally, pass the result to <see cref="ConfigurationBuilder.DataStore(Interfaces.IDataStoreFactory)"/>.
         /// </remarks>
         /// <example>
@@ -24,7 +24,7 @@ namespace LaunchDarkly.Sdk.Server.Integrations
         ///     var config = Configuration.Builder("sdk-key")
         ///         .DataStore(
         ///             Components.PersistentDataStore(
-        ///                 Consul.DataStore().Url("redis://my-redis-host")
+        ///                 Consul.DataStore().Address("http://my-consul-host:8500")
         ///             ).CacheSeconds(15)
         ///         )
         ///         .Build();
