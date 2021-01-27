@@ -13,22 +13,18 @@ namespace LaunchDarkly.Client.Consul.Tests
         
         protected override IFeatureStore CreateStoreImpl(FeatureStoreCacheConfig caching)
         {
-            return BaseBuilder()
-                .WithCaching(caching)
+            return Components.PersistentDataStore(
+                    Integrations.Consul.DataStore()
+                ).CacheTime(caching.Ttl)
                 .CreateFeatureStore();
         }
         
         protected override IFeatureStore CreateStoreImplWithPrefix(string prefix)
         {
-            return BaseBuilder()
-                .WithCaching(FeatureStoreCacheConfig.Disabled)
-                .WithPrefix(prefix)
+            return Components.PersistentDataStore(
+                    Integrations.Consul.DataStore().Prefix(prefix)
+                ).NoCaching()
                 .CreateFeatureStore();
-        }
-
-        private ConsulFeatureStoreBuilder BaseBuilder()
-        {
-            return ConsulComponents.ConsulFeatureStore();
         }
         
         override protected void ClearAllData()

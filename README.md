@@ -2,9 +2,9 @@
 
 [![CircleCI](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul.svg?style=svg)](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul)
 
-This library provides a Consul-backed persistence mechanism (feature store) for the [LaunchDarkly server-side .NET SDK](https://github.com/launchdarkly/dotnet-server-sdk), replacing the default in-memory feature store. It uses [this open-source Consul client library](https://github.com/PlayFab/consuldotnet).
+This library provides a Consul-backed persistence mechanism (data store) for the [LaunchDarkly server-side .NET SDK](https://github.com/launchdarkly/dotnet-server-sdk), replacing the default in-memory data store. It uses [this open-source Consul client library](https://github.com/PlayFab/consuldotnet).
 
-The minimum version of the LaunchDarkly server-side .NET SDK for use with this library is 5.6.4.
+The minimum version of the LaunchDarkly .NET SDK for use with the current version of this library is 5.14.0. For earlier versions of the SDK, use version 1.0.x of this library.
 
 For more information, see also: [Using a persistent feature store](https://docs.launchdarkly.com/v2.0/docs/using-a-persistent-feature-store).
 
@@ -20,41 +20,38 @@ This version of the library is compatible with .NET Framework version 4.5 and ab
 
 2. Import the package (note that the namespace is different from the package name):
 
-        using LaunchDarkly.Client.Consul;
+```csharp
+        using LaunchDarkly.Client.Integrations;
+```
 
-3. When configuring your `LDClient`, add the Consul feature store:
+3. When configuring your `LDClient`, add the Consul data store as a `PersistentDataStore`. You may specify any custom Consul options using the methods of `ConsulDataStoreBuilder`. For instance, to customize the Consul host address:
 
-        Configuration ldConfig = Configuration.Default("YOUR_SDK_KEY")
-            .WithFeatureStoreFactory(ConsulComponents.ConsulFeatureStore());
-        LdClient ldClient = new LdClient(ldConfig);
+```csharp
+        var ldConfig = Configuration.Default("YOUR_SDK_KEY")
+            .DataStore(
+                Components.PersistentDataStore(
+                    Consul.DataStore().Address("http://my-consul-host:8500")
+                )
+            )
+            .Build();
+        var ldClient = new LdClient(ldConfig);
+```
 
-4. Optionally, you can change the Consul configuration by calling methods on the builder returned by `ConsulFeatureStore()`:
-
-        Configuration ldConfig = Configuration.Default("YOUR_SDK_KEY")
-            .WithFeatureStoreFactory(
-                ConsulComponents.ConsulFeatureStore()
-                    .WithAddress(new Uri("http://my-consul-host:8500"))
-            );
-        LdClient ldClient = new LdClient(ldConfig);
-
-5. If you are running a [LaunchDarkly Relay Proxy](https://github.com/launchdarkly/ld-relay) instance, you can use it in [daemon mode](https://github.com/launchdarkly/ld-relay#daemon-mode), so that the SDK retrieves flag data only from Redis and does not communicate directly with LaunchDarkly. This is controlled by the SDK's `UseLdd` option:
-
-        Configuration ldConfig = Configuration.Default("YOUR_SDK_KEY")
-            .WithFeatureStoreFactory(ConsulComponents.ConsulFeatureStore())
-            .WithUseLdd(true);
-        LdClient ldClient = new LdClient(ldConfig);
+By default, the store will try to connect to a local Consul instance on port 8500.
 
 ## Caching behavior
 
-To reduce traffic to Consul, there is an optional in-memory cache that retains the last known data for a configurable amount of time. This is on by default; to turn it off (and guarantee that the latest feature flag data will always be retrieved from Consul for every flag evaluation), configure the builder as follows:
+The LaunchDarkly SDK has a standard caching mechanism for any persistent data store, to reduce database traffic. This is configured through the SDK's `PersistentDataStoreBuilder` class as described in the SDK documentation. For instance, to specify a cache TTL of 5 minutes:
 
-                ConsulComponents.ConsulFeatureStore()
-                    .WithCaching(FeatureStoreCacheConfig.Disabled)
-
-Or, to cache for longer than the default of 30 seconds:
-
-                ConsulComponents.ConsulFeatureStore()
-                    .WithCaching(FeatureStoreCacheConfig.Enabled.WithTtlSeconds(60))
+```csharp
+        var config = Configuration.Default("YOUR_SDK_KEY")
+            .DataStore(
+                Components.PersistentDataStore(
+                    Consul.DataStore().Address("http://my-consul-host:8500")
+                ).CacheTime(TimeSpan.FromMinutes(5))
+            )
+            .Build();
+```
 
 ## Signing
 
