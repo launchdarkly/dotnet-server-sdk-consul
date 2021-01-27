@@ -25,10 +25,13 @@ The .NET build tools should automatically load the most appropriate build of the
 
 2. Import the package (note that the namespace is different from the package name):
 
+```csharp
         using LaunchDarkly.Sdk.Server.Integrations;
+```
 
-3. When configuring your `LdClient`, add the Consul data store as a `PersistentDataStore`. You may specify any custom Consul options using the methods of `ConsulDataStoreBuilder`. For instance, to customize the Redis URI:
+3. When configuring your `LdClient`, add the Consul data store as a `PersistentDataStore`. You may specify any custom Consul options using the methods of `ConsulDataStoreBuilder`. For instance, to customize the Consul host address:
 
+```csharp
         var ldConfig = Configuration.Default("YOUR_SDK_KEY")
             .DataStore(
                 Components.PersistentDataStore(
@@ -37,6 +40,7 @@ The .NET build tools should automatically load the most appropriate build of the
             )
             .Build();
         var ldClient = new LdClient(ldConfig);
+```
 
 By default, the store will try to connect to a local Consul instance on port 8500.
 
@@ -44,6 +48,7 @@ By default, the store will try to connect to a local Consul instance on port 850
 
 The LaunchDarkly SDK has a standard caching mechanism for any persistent data store, to reduce database traffic. This is configured through the SDK's `PersistentDataStoreBuilder` class as described in the SDK documentation. For instance, to specify a cache TTL of 5 minutes:
 
+```csharp
         var config = Configuration.Default("YOUR_SDK_KEY")
             .DataStore(
                 Components.PersistentDataStore(
@@ -51,6 +56,9 @@ The LaunchDarkly SDK has a standard caching mechanism for any persistent data st
                 ).CacheTime(TimeSpan.FromMinutes(5))
             )
             .Build();
+```
+
+By default, the store will try to connect to a local Consul instance on port 8500.
 
 ## How the SDK uses Consul
 
