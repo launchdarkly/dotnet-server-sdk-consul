@@ -17,7 +17,7 @@ namespace LaunchDarkly.Client.Integrations
         /// <remarks>
         /// This object can be modified with <see cref="ConsulDataStoreBuilder"/> methods for any desired
         /// custom Consul options. Then, pass it to <see cref="Components.PersistentDataStore(Interfaces.IPersistentDataStoreAsyncFactory)"/>
-        /// and set any desired caching options. Finally, pass the result to <see cref="IConfigurationBuilder.DataStore(Interfaces.IFeatureStoreFactory)"/>.
+        /// and set any desired caching options. Finally, pass the result to <see cref="IConfigurationBuilder.DataStore(IFeatureStoreFactory)"/>.
         /// </remarks>
         /// <example>
         /// <code>

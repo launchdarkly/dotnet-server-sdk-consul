@@ -19,6 +19,9 @@ namespace LaunchDarkly.Client.Consul
     [Obsolete("Use LaunchDarkly.Client.Integrations.Consul")]
     public sealed class ConsulFeatureStoreBuilder : IFeatureStoreFactory
     {
+        /// <summary>
+        /// The default value for <see cref="ConsulFeatureStoreBuilder.WithPrefix"/>.
+        /// </summary>
         public const string DefaultPrefix = "launchdarkly";
 
         private ConsulClient _existingClient;
