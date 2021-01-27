@@ -32,4 +32,4 @@ jobs:
           command: choco install consul
       - run: dotnet restore
       - run: dotnet build src/LaunchDarkly.ServerSdk.Consul -f net45
-      - run: dotnet test test/LaunchDarkly.ServerSdk.Consul.Tests -f net45
+      - run: dotnet test test/LaunchDarkly.ServerSdk.Consul.Tests -f net452
