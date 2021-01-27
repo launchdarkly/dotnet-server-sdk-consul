@@ -6,16 +6,17 @@ using LaunchDarkly.Client.Utils;
 namespace LaunchDarkly.Client.Consul
 {
     /// <summary>
-    /// Builder for a Consul-based implementation of <see cref="IFeatureStore"/>.
-    /// Create an instance of the builder by calling <see cref="ConsulComponents.ConsulFeatureStore"/>;
-    /// configure it using the setter methods; then pass the builder to
-    /// <see cref="ConfigurationExtensions.WithFeatureStore(Configuration, IFeatureStore)"/>.
-    /// 
-    /// The Consul client has many configuration options. This class has shortcut methods for
-    /// some of them, but if you need more sophisticated control over the Consul client, use
-    /// <see cref="WithConfig(Action{ConsulClientConfiguration})"/> or
-    /// <see cref="WithExistingClient(ConsulClient)"/>.
+    /// Obsolete builder for the Consul data store.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This class is retained in version 1.1 of the library for backward compatibility. For the new
+    /// preferred way to configure the Consul integration, see <see cref="LaunchDarkly.Client.Integrations.Consul"/>.
+    /// Updating to the latter now will make it easier to adopt version 6.0 of the LaunchDarkly .NET SDK, since
+    /// an identical API is used there (except for the base namespace).
+    /// </para>
+    /// </remarks>
+    [Obsolete("Use LaunchDarkly.Client.Integrations.Consul")]
     public sealed class ConsulFeatureStoreBuilder : IFeatureStoreFactory
     {
         public const string DefaultPrefix = "launchdarkly";
