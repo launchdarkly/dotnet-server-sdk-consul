@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Version>1.1.0-alpha.1</Version>
+    <Version>1.1.0</Version>
     <PackageId>LaunchDarkly.ServerSdk.Consul</PackageId>
     <AssemblyName>LaunchDarkly.ServerSdk.Consul</AssemblyName>
     <TargetFrameworks>netstandard1.6;netstandard2.0;net45</TargetFrameworks>
@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="Consul" Version="0.7.2.6" />
-    <PackageReference Include="LaunchDarkly.ServerSdk" Version="5.14.0-alpha.1" />
+    <PackageReference Include="LaunchDarkly.ServerSdk" Version="5.14.0" />
   </ItemGroup>
 
   <ItemGroup>
