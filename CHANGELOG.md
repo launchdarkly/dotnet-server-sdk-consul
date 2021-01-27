@@ -4,7 +4,7 @@ All notable changes to the LaunchDarkly .NET SDK Consul integration will be docu
 
 ## [1.1.0] - 2021-01-26
 ### Added:
-- New classes `LaunchDarkly.Client.Integrations.Consul` and `LaunchDarkly.Client.Integrations.ConsulStoreBuilder`, which serve the same purpose as the previous classes but are designed to work with the newer persistent data store API introduced in .NET SDK 5.14.0.
+- New classes `LaunchDarkly.Client.Integrations.Consul` and `LaunchDarkly.Client.Integrations.ConsulDataStoreBuilder`, which serve the same purpose as the previous classes but are designed to work with the newer persistent data store API introduced in .NET SDK 5.14.0.
 
 ### Deprecated:
 - The old API in the `LaunchDarkly.Client.Consul` namespace.
