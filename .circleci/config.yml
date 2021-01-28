@@ -32,7 +32,7 @@ jobs:
           command: choco install consul
       - run:
           name: run Consul
-          command: consul agent -dev -node -machine
+          command: consul agent -dev
           background: true
       - run: dotnet restore
       - run: dotnet build src/LaunchDarkly.ServerSdk.Consul -f net45
