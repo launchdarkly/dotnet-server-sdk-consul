@@ -1,16 +1,39 @@
-version: 2
+version: 2.1
+
+orbs:
+  win: circleci/windows@2.4.0
+
 workflows:
   version: 2
   test:
     jobs:
-      - test-2.0
+      - test_dotnetcore
+      - test_dotnetframework
+
 jobs:
-  test-2.0:
+  test_dotnetcore:
     docker:
-      - image: microsoft/dotnet:2.0-sdk-jessie
+      - image: mcr.microsoft.com/dotnet/core/sdk:2.1-focal
       - image: consul
     steps:
       - checkout
       - run: dotnet restore
       - run: dotnet build src/LaunchDarkly.ServerSdk.Consul -f netstandard2.0
-      - run: dotnet test test/LaunchDarkly.ServerSdk.Consul.Tests -f netcoreapp2.0
+      - run: dotnet test test/LaunchDarkly.ServerSdk.Consul.Tests -f netcoreapp2.1
+
+  test_dotnetframework:
+    executor:
+      name: win/default
+      shell: powershell.exe
+    steps:
+      - checkout
+      - run:
+          name: install Consul
+          command: choco install consul
+      - run:
+          name: run Consul
+          command: consul agent -dev
+          background: true
+      - run: dotnet restore
+      - run: dotnet build src/LaunchDarkly.ServerSdk.Consul -f net45
+      - run: dotnet test test/LaunchDarkly.ServerSdk.Consul.Tests -f net452
