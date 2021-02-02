@@ -1,6 +1,8 @@
 # LaunchDarkly Server-Side SDK for .NET - Consul integration
 
-[![CircleCI](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul.svg?style=svg)](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul)
+[![NuGet](https://img.shields.io/nuget/v/LaunchDarkly.ServerSdk.Consul.svg?style=flat-square)](https://www.nuget.org/packages/LaunchDarkly.ServerSdk.Consul/)
+[![CircleCI](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul.svg?style=shield)](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul)
+[![Documentation](https://img.shields.io/static/v1?label=GitHub+Pages&message=API+reference&color=00add8)](https://launchdarkly.github.io/dotnet-server-sdk-consul)
 
 This library provides a Consul-backed persistence mechanism (data store) for the [LaunchDarkly server-side .NET SDK](https://github.com/launchdarkly/dotnet-server-sdk), replacing the default in-memory data store. It uses [this open-source Consul client library](https://github.com/PlayFab/consuldotnet).
 
