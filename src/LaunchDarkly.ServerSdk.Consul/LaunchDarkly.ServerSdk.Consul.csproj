@@ -1,12 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Version>2.0.0-alpha.1</Version>
+    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
     <PackageId>LaunchDarkly.ServerSdk.Consul</PackageId>
     <AssemblyName>LaunchDarkly.ServerSdk.Consul</AssemblyName>
-    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
     <OutputType>Library</OutputType>
+    <LangVersion>7.3</LangVersion>
     <Description>LaunchDarkly .NET Client Consul Integration</Description>
     <Company>LaunchDarkly</Company>
+    <Authors>LaunchDarkly</Authors>
+    <Owners>LaunchDarkly</Owners>
     <Copyright>Copyright 2018 Catamorphic, Co.</Copyright>
     <LicenseExpression>Apache-2.0</LicenseExpression>
     <PackageProjectUrl>https://github.com/launchdarkly/dotnet-server-sdk-consul</PackageProjectUrl>
@@ -18,19 +21,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Consul" Version="0.7.2.6" />
-    <PackageReference Include="LaunchDarkly.ServerSdk" Version="6.0.0-alpha.3" />
+    <PackageReference Include="Consul" Version="[0.7.2.6,]" />
+    <PackageReference Include="LaunchDarkly.ServerSdk" Version="[6.0.0-alpha.3,]" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Integrations\" />
   </ItemGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\LaunchDarkly.ServerSdk.Consul.xml</DocumentationFile>
+
+  <PropertyGroup>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\LaunchDarkly.ServerSdk.Consul.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>../../LaunchDarkly.ServerSdk.Consul.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>../../LaunchDarkly.Consul.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 </Project>

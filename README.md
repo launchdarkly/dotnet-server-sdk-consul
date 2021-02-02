@@ -1,6 +1,8 @@
 # LaunchDarkly Server-Side SDK for .NET - Consul integration
 
-[![CircleCI](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul.svg?style=svg)](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul)
+[![NuGet](https://img.shields.io/nuget/v/LaunchDarkly.ServerSdk.Consul.svg?style=flat-square)](https://www.nuget.org/packages/LaunchDarkly.ServerSdk.Consul/)
+[![CircleCI](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul.svg?style=shield)](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul)
+[![Documentation](https://img.shields.io/static/v1?label=GitHub+Pages&message=API+reference&color=00add8)](https://launchdarkly.github.io/dotnet-server-sdk-consul)
 
 This library provides a Consul-backed persistence mechanism (data store) for the [LaunchDarkly server-side .NET SDK](https://github.com/launchdarkly/dotnet-server-sdk), replacing the default in-memory data store. It uses [this open-source Consul client library](https://github.com/PlayFab/consuldotnet).
 
@@ -60,25 +62,13 @@ The LaunchDarkly SDK has a standard caching mechanism for any persistent data st
 
 By default, the store will try to connect to a local Consul instance on port 8500.
 
-## How the SDK uses Consul
-
-The Consul integrations for all LaunchDarkly server-side SDKs use the same conventions, so that SDK instances and Relay Proxy instances sharing a single Consul store can interoperate correctly. The storage schema is as follows:
-
-* There is always a "prefix" string that provides a namespace for the overall data set. If you do not specify a prefix in your configuration, it is `launchdarkly`.
-
-* For each data item that the SDK can store, such as a feature flag, there is a Consul key-value pair where the key is `PREFIX/TYPE/KEY`. `PREFIX` is the configured prefix string. `TYPE` denotes the type of data; currently, the types are `features` and `segments`, but this is subject to change in the future. `KEY` is the unique key of the item (such as the flag key for a feature flag). The value is a serialized representation of that item, in a format that is determined by the SDK.
-
-* An additional key, `PREFIX/$inited`, is created with an arbitrary value when the SDK stores a full set of feature flag data. This allows a new SDK instance to check whether there is already a valid data set that was stored earlier.
-
-* The SDK will never add, modify, or remove any keys in Consul other than the ones described above, so it is safe to share a Consul instance that is also being used for other purposes.
-
 ## Signing
 
-The published version of this assembly is strong-named. Building the code locally in the default Debug configuration does not use strong-naming and does not require a key file.
+The published version of this assembly is digitally signed with Authenticode and [strong-named](https://docs.microsoft.com/en-us/dotnet/framework/app-domains/strong-named-assemblies). Building the code locally in the default Debug configuration does not use strong-naming and does not require a key file.
 
 ## Contributing
 
-See [Contributing](./CONTRIBUTING.md).
+We encourage pull requests and other contributions from the community. Check out our [contributing guidelines](CONTRIBUTING.md) for instructions on how to contribute to this project.
 
 ## About LaunchDarkly
  

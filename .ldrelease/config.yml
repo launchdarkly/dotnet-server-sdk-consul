@@ -1,4 +1,3 @@
-
 publications:
   - url: https://nuget.org/packages/LaunchDarkly.ServerSdk.Consul
     description: NuGet
@@ -6,13 +5,13 @@ publications:
 circleci:
   windows:
     context: org-global
+    env:
+      LD_RELEASE_DOCS_TARGET_FRAMEWORK: net452
 
 template:
   name: dotnet-windows
   skip:
     - test
-  env:
-    LD_RELEASE_DOCS_TARGET_FRAMEWORK: netstandard2.0
 
 documentation:
   title: LaunchDarkly Server-Side .NET SDK Consul Integration
