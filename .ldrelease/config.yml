@@ -6,13 +6,13 @@ circleci:
   windows:
     context: org-global
     env:
-      LD_RELEASE_DOCS_TARGET_FRAMEWORK: netstandard2.0
+      LD_RELEASE_DOCS_TARGET_FRAMEWORK: net452
 
 template:
   name: dotnet-windows
   skip:
-    - test  # tests require Consul - run them only in CI
+    - test
 
 documentation:
-  title: LaunchDarkly SDK Consul Integration
+  title: LaunchDarkly Server-Side .NET SDK Consul Integration
   githubPages: true

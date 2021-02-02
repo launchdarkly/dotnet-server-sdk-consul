@@ -17,6 +17,8 @@ We encourage pull requests and other contributions from the community. Before su
 This project has multiple target frameworks as described in [`README.md`](./README.md). The .NET Framework target can be built only in a Windows environment; the others can be built either with or without a Windows environment. Download and install the latest .NET SDK tools first.
 
 The project has a package dependency on `Consul`. The dependency version is intended to be the _minimum_ compatible version; applications are expected to override this with their own dependency on some higher version.
+
+The unit test project uses code from the `dotnet-server-sdk-shared-tests` repository which is imported as a subtree. See the `README.md` file in that directory for more information.
  
 ### Building
  

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Consul;
-using LaunchDarkly.Client.Interfaces;
-using LaunchDarkly.Client.Utils;
+using LaunchDarkly.Sdk.Server.Interfaces;
 
-namespace LaunchDarkly.Client.Integrations
+namespace LaunchDarkly.Sdk.Server.Integrations
 {
     /// <summary>
     /// A builder for configuring the Consul-based persistent data store.
@@ -14,8 +13,8 @@ namespace LaunchDarkly.Client.Integrations
     /// Obtain an instance of this class by calling <see cref="Consul.DataStore"/>. After calling its methods
     /// to specify any desired custom settings, wrap it in a <see cref="PersistentDataStoreBuilder"/>
     /// by calling <see cref="Components.PersistentDataStore(IPersistentDataStoreFactory)"/>, then pass
-    /// the result into the SDK configuration with <see cref="IConfigurationBuilder.DataStore(IFeatureStoreFactory)"/>.
-    /// You do not need to call <see cref="CreatePersistentDataStore()"/> yourself to build
+    /// the result into the SDK configuration with <see cref="ConfigurationBuilder.DataStore(IDataStoreFactory)"/>.
+    /// You do not need to call <see cref="CreatePersistentDataStore(LdClientContext)"/> yourself to build
     /// the actual data store; that will be done by the SDK.
     /// </para>
     /// <para>
@@ -46,7 +45,7 @@ namespace LaunchDarkly.Client.Integrations
         private List<Action<ConsulClientConfiguration>> _configActions = new List<Action<ConsulClientConfiguration>>();
         private Uri _address;
         private string _prefix = Consul.DefaultPrefix;
-
+        
         internal ConsulDataStoreBuilder() { }
 
         /// <summary>
@@ -124,7 +123,7 @@ namespace LaunchDarkly.Client.Integrations
         }
 
         /// <inheritdoc/>
-        public IFeatureStoreCoreAsync CreatePersistentDataStore()
+        public IPersistentDataStoreAsync CreatePersistentDataStore(LdClientContext context)
         {
             var client = _existingClient;
             if (client is null)
@@ -142,9 +141,11 @@ namespace LaunchDarkly.Client.Integrations
                 });
             }
 
-            return new LaunchDarkly.Client.Consul.ConsulFeatureStoreCore(
+            return new ConsulDataStoreImpl(
                 client,
-                _prefix
+                _existingClient != null,
+                _prefix,
+                context.Basic.Logger.SubLogger("DataStore.Consul")
                 );
         }
     }

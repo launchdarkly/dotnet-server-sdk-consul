@@ -1,5 +1,5 @@
 ﻿
-namespace LaunchDarkly.Client.Integrations
+namespace LaunchDarkly.Sdk.Server.Integrations
 {
     /// <summary>
     /// Integration between the LaunchDarkly SDK and Consul.
@@ -17,7 +17,7 @@ namespace LaunchDarkly.Client.Integrations
         /// <remarks>
         /// This object can be modified with <see cref="ConsulDataStoreBuilder"/> methods for any desired
         /// custom Consul options. Then, pass it to <see cref="Components.PersistentDataStore(Interfaces.IPersistentDataStoreAsyncFactory)"/>
-        /// and set any desired caching options. Finally, pass the result to <see cref="IConfigurationBuilder.DataStore(IFeatureStoreFactory)"/>.
+        /// and set any desired caching options. Finally, pass the result to <see cref="ConfigurationBuilder.DataStore(Interfaces.IDataStoreFactory)"/>.
         /// </remarks>
         /// <example>
         /// <code>

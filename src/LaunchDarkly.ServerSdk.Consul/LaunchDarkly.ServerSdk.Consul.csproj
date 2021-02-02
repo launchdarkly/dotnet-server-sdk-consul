@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Version>1.1.0</Version>
-    <TargetFrameworks>netstandard1.6;netstandard2.0;net45</TargetFrameworks>
+    <Version>2.0.0-alpha.1</Version>
+    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
     <PackageId>LaunchDarkly.ServerSdk.Consul</PackageId>
     <AssemblyName>LaunchDarkly.ServerSdk.Consul</AssemblyName>
     <OutputType>Library</OutputType>
@@ -17,12 +17,12 @@
     <RepositoryBranch>master</RepositoryBranch>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <RootNamespace>LaunchDarkly.Client.Integrations</RootNamespace>
+    <RootNamespace>LaunchDarkly.Sdk.Server.Integrations</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Consul" Version="[0.7.2.6,]" />
-    <PackageReference Include="LaunchDarkly.ServerSdk" Version="[5.14.0,6.0.0)" />
+    <PackageReference Include="LaunchDarkly.ServerSdk" Version="[6.0.0-alpha.9,]" />
   </ItemGroup>
 
   <ItemGroup>

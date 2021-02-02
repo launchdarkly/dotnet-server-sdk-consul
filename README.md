@@ -6,13 +6,18 @@
 
 This library provides a Consul-backed persistence mechanism (data store) for the [LaunchDarkly server-side .NET SDK](https://github.com/launchdarkly/dotnet-server-sdk), replacing the default in-memory data store. It uses [this open-source Consul client library](https://github.com/PlayFab/consuldotnet).
 
-The minimum version of the LaunchDarkly .NET SDK for use with the current version of this library is 5.14.0. For earlier versions of the SDK, use version 1.0.x of this library.
+For more information, see also: [Using a persistent data store](https://docs.launchdarkly.com/v2.0/docs/using-a-persistent-feature-store).
 
-For more information, see also: [Using a persistent feature store](https://docs.launchdarkly.com/v2.0/docs/using-a-persistent-feature-store).
+Version 2.0.0 and above of this library works with version 6.0.0 and above of the LaunchDarkly .NET SDK. For earlier versions of the SDK, use the latest 1.x release of this library.
 
-## .NET platform compatibility
+## Supported .NET versions
 
-This version of the library is compatible with .NET Framework version 4.5 and above, .NET Standard 1.6, and .NET Standard 2.0.
+This version of the library is built for the following targets:
+
+* .NET Framework 4.5.2: runs on .NET Framework 4.5.x and above.
+* .NET Standard 2.0: runs on .NET Core 2.x and 3.x, or .NET 5, in an application; or within a library that is targeted to .NET Standard 2.x or .NET 5.
+
+The .NET build tools should automatically load the most appropriate build of the library for whatever platform your application or library is targeted to.
 
 ## Quick setup
 
@@ -23,10 +28,10 @@ This version of the library is compatible with .NET Framework version 4.5 and ab
 2. Import the package (note that the namespace is different from the package name):
 
 ```csharp
-        using LaunchDarkly.Client.Integrations;
+        using LaunchDarkly.Sdk.Server.Integrations;
 ```
 
-3. When configuring your `LDClient`, add the Consul data store as a `PersistentDataStore`. You may specify any custom Consul options using the methods of `ConsulDataStoreBuilder`. For instance, to customize the Consul host address:
+3. When configuring your `LdClient`, add the Consul data store as a `PersistentDataStore`. You may specify any custom Consul options using the methods of `ConsulDataStoreBuilder`. For instance, to customize the Consul host address:
 
 ```csharp
         var ldConfig = Configuration.Default("YOUR_SDK_KEY")
@@ -54,6 +59,8 @@ The LaunchDarkly SDK has a standard caching mechanism for any persistent data st
             )
             .Build();
 ```
+
+By default, the store will try to connect to a local Consul instance on port 8500.
 
 ## Signing
 
