@@ -1,26 +1,36 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Version>1.1.0</Version>
+    <TargetFrameworks>netstandard1.6;netstandard2.0;net45</TargetFrameworks>
     <PackageId>LaunchDarkly.ServerSdk.Consul</PackageId>
     <AssemblyName>LaunchDarkly.ServerSdk.Consul</AssemblyName>
-    <TargetFrameworks>netstandard1.6;netstandard2.0;net45</TargetFrameworks>
     <OutputType>Library</OutputType>
+    <LangVersion>7.3</LangVersion>
     <Description>LaunchDarkly .NET Client Consul Integration</Description>
     <Company>LaunchDarkly</Company>
+    <Authors>LaunchDarkly</Authors>
+    <Owners>LaunchDarkly</Owners>
     <Copyright>Copyright 2018 Catamorphic, Co.</Copyright>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/launchdarkly/dotnet-server-sdk-consul/master/LICENSE</PackageLicenseUrl>
+    <LicenseExpression>Apache-2.0</LicenseExpression>
+    <PackageProjectUrl>https://github.com/launchdarkly/dotnet-server-sdk-consul</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/launchdarkly/dotnet-server-sdk-consul</RepositoryUrl>
+    <RepositoryBranch>master</RepositoryBranch>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <RootNamespace>LaunchDarkly.Client.Integrations</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Consul" Version="0.7.2.6" />
-    <PackageReference Include="LaunchDarkly.ServerSdk" Version="5.14.0" />
+    <PackageReference Include="Consul" Version="[0.7.2.6,]" />
+    <PackageReference Include="LaunchDarkly.ServerSdk" Version="[5.14.0,6.0.0)" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Integrations\" />
   </ItemGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\LaunchDarkly.ServerSdk.Consul.xml</DocumentationFile>
+
+  <PropertyGroup>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\LaunchDarkly.ServerSdk.Consul.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
