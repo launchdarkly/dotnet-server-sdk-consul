@@ -1,0 +1,466 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ConsulDataStoreBuilder
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ConsulDataStoreBuilder
+   ">
+    <meta name="generator" content="docfx 2.57.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder">
+  
+  
+  <h1 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder" class="text-break">Class ConsulDataStoreBuilder
+  </h1>
+  <div class="markdown level0 summary"><p>A builder for configuring the Consul-based persistent data store.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ConsulDataStoreBuilder</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">LaunchDarkly.Sdk.Server.Interfaces.IPersistentDataStoreAsyncFactory</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.html">LaunchDarkly.Sdk.Server.Integrations</a></h6>
+  <h6><strong>Assembly</strong>: LaunchDarkly.ServerSdk.Consul.dll</h6>
+  <h5 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class ConsulDataStoreBuilder : IPersistentDataStoreAsyncFactory</code></pre>
+  </div>
+  <h5 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p><p>
+Obtain an instance of this class by calling <a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.Consul.html#LaunchDarkly_Sdk_Server_Integrations_Consul_DataStore">DataStore()</a>. After calling its methods
+to specify any desired custom settings, wrap it in a <span class="xref">LaunchDarkly.Sdk.Server.Integrations.PersistentDataStoreBuilder</span>
+by calling <span class="xref">LaunchDarkly.Sdk.Server.Components.PersistentDataStore(LaunchDarkly.Sdk.Server.Interfaces.IPersistentDataStoreFactory)</span>, then pass
+the result into the SDK configuration with <span class="xref">LaunchDarkly.Sdk.Server.ConfigurationBuilder.DataStore(LaunchDarkly.Sdk.Server.Interfaces.IDataStoreFactory)</span>.
+You do not need to call <a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_CreatePersistentDataStore_LaunchDarkly_Sdk_Server_Interfaces_LdClientContext_">CreatePersistentDataStore(LdClientContext)</a> yourself to build
+the actual data store; that will be done by the SDK.
+</p>
+<p>
+The Consul client has many configuration options. This class has shortcut methods for
+some of them, but if you need more sophisticated control over the Consul client, use
+<a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_ConsulConfigChanges_System_Action_Consul_ConsulClientConfiguration__">ConsulConfigChanges(Action&lt;ConsulClientConfiguration&gt;)</a> or
+<a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_ExistingClient_Consul_ConsulClient_">ExistingClient(ConsulClient)</a>.
+</p>
+<p>
+Builder calls can be chained, for example:
+</p></p>
+<pre><code>    var config = Configuration.Builder(&quot;sdk-key&quot;)
+        .DataStore(
+            Components.PersistentDataStore(
+                Consul.DataStore()
+                    .Address(&quot;http://my-consul-host:8500&quot;)
+                    .Prefix(&quot;app1&quot;)
+                )
+                .CacheSeconds(15)
+            )
+        .Build();</code></pre>
+</div>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Address_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Address*"></a>
+  <h4 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Address_System_String_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Address(System.String)">Address(String)</h4>
+  <div class="markdown level1 summary"><p>Shortcut for calling <a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Address_System_Uri_">Address(Uri)</a> with a string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConsulDataStoreBuilder Address(string address)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">address</span></td>
+        <td><p>the URI of the Consul host as a string</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html">ConsulDataStoreBuilder</a></td>
+        <td><p>the builder</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Address_System_String__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Address_System_Uri_">Address(Uri)</a></div>
+  </div>
+  <a id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Address_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Address*"></a>
+  <h4 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Address_System_Uri_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Address(System.Uri)">Address(Uri)</h4>
+  <div class="markdown level1 summary"><p>Specifies the Consul agent&apos;s location.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConsulDataStoreBuilder Address(Uri address)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">address</span></td>
+        <td><p>the URI of the Consul host</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html">ConsulDataStoreBuilder</a></td>
+        <td><p>the builder</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Address_System_Uri__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Address_System_String_">Address(String)</a></div>
+  </div>
+  <a id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_ConsulConfigChanges_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.ConsulConfigChanges*"></a>
+  <h4 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_ConsulConfigChanges_System_Action_Consul_ConsulClientConfiguration__" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.ConsulConfigChanges(System.Action{Consul.ConsulClientConfiguration})">ConsulConfigChanges(Action&lt;ConsulClientConfiguration&gt;)</h4>
+  <div class="markdown level1 summary"><p>Specifies custom steps for configuring the Consul client. Your action may modify the
+<span class="xref">Consul.ConsulClientConfiguration</span> object in any way.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConsulDataStoreBuilder ConsulConfigChanges(Action&lt;ConsulClientConfiguration&gt; configAction)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">Consul.ConsulClientConfiguration</span>&gt;</td>
+        <td><span class="parametername">configAction</span></td>
+        <td><p>an action for modifying the configuration</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html">ConsulDataStoreBuilder</a></td>
+        <td><p>the builder</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_CreatePersistentDataStore_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.CreatePersistentDataStore*"></a>
+  <h4 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_CreatePersistentDataStore_LaunchDarkly_Sdk_Server_Interfaces_LdClientContext_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.CreatePersistentDataStore(LaunchDarkly.Sdk.Server.Interfaces.LdClientContext)">CreatePersistentDataStore(LdClientContext)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IPersistentDataStoreAsync CreatePersistentDataStore(LdClientContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">LaunchDarkly.Sdk.Server.Interfaces.LdClientContext</span></td>
+        <td><span class="parametername">context</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">LaunchDarkly.Sdk.Server.Interfaces.IPersistentDataStoreAsync</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_ExistingClient_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.ExistingClient*"></a>
+  <h4 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_ExistingClient_Consul_ConsulClient_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.ExistingClient(Consul.ConsulClient)">ExistingClient(ConsulClient)</h4>
+  <div class="markdown level1 summary"><p>Specifies an existing, already-configured Consul client instance that the data store
+should use rather than creating one of its own.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConsulDataStoreBuilder ExistingClient(ConsulClient client)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Consul.ConsulClient</span></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>an existing Consul client instance</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html">ConsulDataStoreBuilder</a></td>
+        <td><p>the builder</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_ExistingClient_Consul_ConsulClient__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+If you specify an existing client, then the other builder methods for configuring Consul are ignored.
+</p>
+<p>
+Note that the LaunchDarkly code will <em>not</em> take ownership of the lifecycle of this
+object: in other words, it will not call <code>Dispose()</code> on the <code>ConsulClient</code> when
+you dispose of the SDK client, as it would if it had created the <code>ConsulClient</code> itself.
+It is your responsibility to call <code>Dispose()</code> on the <code>ConsulClient</code> when you are
+done with it.
+</p>
+</div>
+  <a id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Prefix_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Prefix*"></a>
+  <h4 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Prefix_System_String_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Prefix(System.String)">Prefix(String)</h4>
+  <div class="markdown level1 summary"><p>Sets an optional namespace prefix for all keys stored in Consul.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConsulDataStoreBuilder Prefix(string prefix)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">prefix</span></td>
+        <td><p>the namespace prefix, or null to use <a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.Consul.html#LaunchDarkly_Sdk_Server_Integrations_Consul_DefaultPrefix">DefaultPrefix</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html">ConsulDataStoreBuilder</a></td>
+        <td><p>the builder</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Prefix_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Use this if you are sharing the same database table between multiple clients that are for
+different LaunchDarkly environments, to avoid key collisions.</p>
+</div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">LaunchDarkly.Sdk.Server.Interfaces.IPersistentDataStoreAsyncFactory</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
