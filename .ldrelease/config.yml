@@ -19,11 +19,6 @@ jobs:
     env:
       LD_RELEASE_DOCS_TARGET_FRAMEWORK: netstandard2.0
 
-template:
-  name: dotnet-windows
-  skip:
-    - test
-
 documentation:
   title: LaunchDarkly Server-Side .NET SDK Consul Integration
   gitHubPages: true
