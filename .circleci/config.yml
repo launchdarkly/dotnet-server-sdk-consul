@@ -13,13 +13,13 @@ workflows:
 jobs:
   test_dotnetcore:
     docker:
-      - image: mcr.microsoft.com/dotnet/core/sdk:2.1-focal
+      - image: mcr.microsoft.com/dotnet/sdk:5.0-focal
       - image: consul
     steps:
       - checkout
       - run: dotnet restore
       - run: dotnet build src/LaunchDarkly.ServerSdk.Consul -f netstandard2.0
-      - run: dotnet test test/LaunchDarkly.ServerSdk.Consul.Tests -f netcoreapp2.1
+      - run: dotnet test test/LaunchDarkly.ServerSdk.Consul.Tests -f net5.0
 
   test_dotnetframework:
     executor:

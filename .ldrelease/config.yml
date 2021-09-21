@@ -1,18 +1,23 @@
+version: 2
+
 publications:
   - url: https://nuget.org/packages/LaunchDarkly.ServerSdk.Consul
     description: NuGet
 
-releasableBranches:
+branches:
   - name: master
     description: 2.x - for SDK 6+
   - name: 1.x
     description: for SDK 5.x
 
-circleci:
-  windows:
-    context: org-global
+jobs:
+  - docker: {}
+    template:
+      name: dotnet-linux
+      skip:
+        - test
     env:
-      LD_RELEASE_DOCS_TARGET_FRAMEWORK: net452
+      LD_RELEASE_DOCS_TARGET_FRAMEWORK: netstandard2.0
 
 template:
   name: dotnet-windows
@@ -21,4 +26,4 @@ template:
 
 documentation:
   title: LaunchDarkly Server-Side .NET SDK Consul Integration
-  githubPages: true
+  gitHubPages: true
