@@ -21,6 +21,8 @@ This version of the library is built for the following targets:
 
 The .NET build tools should automatically load the most appropriate build of the library for whatever platform your application or library is targeted to.
 
+It has a dependency on version 1.6.1.1 of the [Consul client package](https://www.nuget.org/packages/Consul). If you are using a higher version of that package, you should install it explicitly as a dependency in your application to override this minimum version.
+
 ## Signing
 
 The published version of this assembly is digitally signed with Authenticode and [strong-named](https://docs.microsoft.com/en-us/dotnet/framework/app-domains/strong-named-assemblies). Building the code locally in the default Debug configuration does not use strong-naming and does not require a key file.
