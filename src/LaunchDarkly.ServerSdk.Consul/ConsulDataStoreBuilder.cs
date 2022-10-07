@@ -39,7 +39,8 @@ namespace LaunchDarkly.Sdk.Server.Integrations
     ///         .Build();
     /// </code>
     /// </remarks>
-    public sealed class ConsulDataStoreBuilder : IComponentConfigurer<IPersistentDataStoreAsync>
+    public sealed class ConsulDataStoreBuilder : IComponentConfigurer<IPersistentDataStoreAsync>,
+        IDiagnosticDescription
     {
         private ConsulClient _existingClient;
         private List<Action<ConsulClientConfiguration>> _configActions = new List<Action<ConsulClientConfiguration>>();
@@ -148,5 +149,9 @@ namespace LaunchDarkly.Sdk.Server.Integrations
                 context.Logger.SubLogger("DataStore.Consul")
                 );
         }
+
+        /// <inheritdoc/>
+        public LdValue DescribeConfiguration(LdClientContext context) =>
+            LdValue.Of("Consul");
     }
 }
