@@ -1,4 +1,5 @@
-﻿
+﻿using LaunchDarkly.Sdk.Server.Subsystems;
+
 namespace LaunchDarkly.Sdk.Server.Integrations
 {
     /// <summary>
@@ -16,8 +17,8 @@ namespace LaunchDarkly.Sdk.Server.Integrations
         /// </summary>
         /// <remarks>
         /// This object can be modified with <see cref="ConsulDataStoreBuilder"/> methods for any desired
-        /// custom Consul options. Then, pass it to <see cref="Components.PersistentDataStore(Interfaces.IPersistentDataStoreAsyncFactory)"/>
-        /// and set any desired caching options. Finally, pass the result to <see cref="ConfigurationBuilder.DataStore(Interfaces.IDataStoreFactory)"/>.
+        /// custom Consul options. Then, pass it to <see cref="Components.PersistentDataStore(IComponentConfigurer{IPersistentDataStoreAsync})"/>
+        /// and set any desired caching options. Finally, pass the result to <see cref="ConfigurationBuilder.DataStore(IComponentConfigurer{IDataStore})"/>.
         /// </remarks>
         /// <example>
         /// <code>
