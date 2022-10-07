@@ -1,6 +1,6 @@
 The [`LaunchDarkly.ServerSdk.Consul`](https://nuget.org/packages/LaunchDarkly.ServerSdk.Consul) package provides a Consul-backed persistence mechanism (data store) for the [LaunchDarkly .NET SDK](https://github.com/launchdarkly/dotnet-server-sdk), replacing the default in-memory data store. The underlying Consul client implementation is https://github.com/PlayFab/consuldotnet.
 
-For more information, see also: [Using Consul as a persistent feature store](https://docs.launchdarkly.com/sdk/features/storing-data/consul#net).
+For more information, see also: [Using Consul as a persistent feature store](https://docs.launchdarkly.com/sdk/features/storing-data/consul#net-server-side).
 
 Version 2.0.0 and above of this library works with version 6.0.0 and above of the LaunchDarkly .NET SDK. For earlier versions of the SDK, use the latest 1.x release of this library.
 
