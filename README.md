@@ -4,7 +4,7 @@
 [![CircleCI](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul.svg?style=shield)](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul)
 [![Documentation](https://img.shields.io/static/v1?label=GitHub+Pages&message=API+reference&color=00add8)](https://launchdarkly.github.io/dotnet-server-sdk-consul)
 
-This library provides a Consul-backed persistence mechanism (data store) for the [LaunchDarkly server-side .NET SDK](https://github.com/launchdarkly/dotnet-server-sdk), replacing the default in-memory data store. It uses the open-source [Consul.NET](https://github.com/G-Research/consuldotnet) package.
+This library provides a Consul-backed persistence mechanism (data store) for the [LaunchDarkly server-side .NET SDK](https://github.com/launchdarkly/dotnet-server-sdk), replacing the default in-memory data store. It uses the open-source [Consul.NET](https://www.nuget.org/packages/Consul) package.
 
 For more information, see also: [Using a persistent data store](https://docs.launchdarkly.com/v2.0/docs/using-a-persistent-feature-store).
 
@@ -21,7 +21,7 @@ This version of the library is built for the following targets:
 
 The .NET build tools should automatically load the most appropriate build of the library for whatever platform your application or library is targeted to.
 
-It has a dependency on version 1.6.1.1 of the [Consul client package](https://www.nuget.org/packages/Consul). If you are using a higher version of that package, you should install it explicitly as a dependency in your application to override this minimum version.
+It has a dependency on version 1.6.1.1 of [Consul.NET](https://www.nuget.org/packages/Consul). If you are using a higher version of that package, you should install it explicitly as a dependency in your application to override this minimum version.
 
 ## Signing
 
