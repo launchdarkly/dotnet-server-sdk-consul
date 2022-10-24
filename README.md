@@ -4,7 +4,7 @@
 [![CircleCI](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul.svg?style=shield)](https://circleci.com/gh/launchdarkly/dotnet-server-sdk-consul)
 [![Documentation](https://img.shields.io/static/v1?label=GitHub+Pages&message=API+reference&color=00add8)](https://launchdarkly.github.io/dotnet-server-sdk-consul)
 
-This library provides a Consul-backed persistence mechanism (data store) for the [LaunchDarkly server-side .NET SDK](https://github.com/launchdarkly/dotnet-server-sdk), replacing the default in-memory data store. It uses [this open-source Consul client library](https://github.com/PlayFab/consuldotnet).
+This library provides a Consul-backed persistence mechanism (data store) for the [LaunchDarkly server-side .NET SDK](https://github.com/launchdarkly/dotnet-server-sdk), replacing the default in-memory data store. It uses the open-source [Consul.NET](https://www.nuget.org/packages/Consul) package.
 
 For more information, see also: [Using Consul as a persistent feature store](https://docs.launchdarkly.com/sdk/features/storing-data/consul#net-server-side).
 
@@ -16,10 +16,12 @@ For full usage details and examples, see the [API reference](launchdarkly.github
 
 This version of the library is built for the following targets:
 
-* .NET Framework 4.5.2: runs on .NET Framework 4.5.x and above.
-* .NET Standard 2.0: runs on .NET Core 2.x and 3.x, or .NET 5, in an application; or within a library that is targeted to .NET Standard 2.x or .NET 5.
+* .NET Framework 4.6.1: runs on .NET Framework 4.6.1 and above.
+* .NET Standard 2.0: runs on .NET Core 2.x and 3.x, or .NET 5+, in an application; or within a library that is targeted to .NET Standard 2.x or .NET 5+.
 
 The .NET build tools should automatically load the most appropriate build of the library for whatever platform your application or library is targeted to.
+
+It has a dependency on version 1.6.1.1 of [Consul.NET](https://www.nuget.org/packages/Consul). If you are using a higher version of that package, you should install it explicitly as a dependency in your application to override this minimum version.
 
 ## Signing
 
