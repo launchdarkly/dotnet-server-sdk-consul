@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Users/circleci/AppData/Local/Temp/project-releaser-temp/build-docs",
+  "source_base_path": "/tmp/project-releaser/temp/build-docs",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LaunchDarkly.Sdk.Server.Integrations.Consul.html",
-          "hash": "tMCcnhIrUv64Mv8WkvMiOE85O26BJKOIC06c7SLRcgg="
+          "hash": "+wJWTxj37IsdNNUSyUK3BsiuNVyQbiTHg13SDKJ0ue4="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html",
-          "hash": "GSikco6e0A01L3kHUobBmS71cTk3ZaDvkAnB1A/cSK4="
+          "hash": "dQBww+cVmejzdfcJLs6sWCMWGrJrZjVPAYAeDwkBX1s="
         }
       },
       "is_incremental": false,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "ROPigTFKFFEuAoBMhfjZoVWOTrdP2qCpqC5vlfDYdjg="
+          "hash": "wJdqrCptscnGeIG4m7H/2Uq/jHzItE9QA3OgtqTQXPQ="
         }
       },
       "is_incremental": false,
