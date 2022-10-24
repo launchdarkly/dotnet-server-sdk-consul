@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Version>2.0.0</Version>
-    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
     <PackageId>LaunchDarkly.ServerSdk.Consul</PackageId>
     <AssemblyName>LaunchDarkly.ServerSdk.Consul</AssemblyName>
     <OutputType>Library</OutputType>
@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <PackageReference Include="Consul" Version="[0.7.2.6,]" />
-    <PackageReference Include="LaunchDarkly.ServerSdk" Version="[6.0.0,7.0.0)" />
+    <PackageReference Include="LaunchDarkly.ServerSdk" Version="7.0.0-alpha.3" />
   </ItemGroup>
 
   <ItemGroup>

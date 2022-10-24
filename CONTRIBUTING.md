@@ -14,7 +14,7 @@ We encourage pull requests and other contributions from the community. Before su
  
 ### Prerequisites
 
-To set up your SDK build time environment, you must [download .NET development tools and follow the instructions](https://dotnet.microsoft.com/download). .NET 5.0 is preferred, since the .NET 5.0 tools are able to build for all supported target platforms.
+To set up your SDK build time environment, you must [download .NET development tools and follow the instructions](https://dotnet.microsoft.com/download). .NET 6.0 is preferred, since the .NET 6.0 tools are able to build for all supported target platforms.
 
 The project has a package dependency on `Consul`. The dependency version is intended to be the _minimum_ compatible version; applications are expected to override this with their own dependency on some higher version.
 
@@ -50,10 +50,10 @@ To run all unit tests, for all targets (this includes .NET Framework, so you can
 dotnet test test/LaunchDarkly.ServerSdk.Consul.Tests
 ```
 
-Or, to run tests only for one target (in this case .NET Core 2.1):
+Or, to run tests only for one target (in this case .NET Core 3.1):
 
 ```
-dotnet test test/LaunchDarkly.ServerSdk.Consul.Tests -f netcoreapp2.1
+dotnet test test/LaunchDarkly.ServerSdk.Consul.Tests -f netcoreapp3.1
 ```
 
 The tests expect you to have Consul running locally on the default port, 8500. One way to do this is with Docker:

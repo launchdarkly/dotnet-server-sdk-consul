@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Consul;
-using LaunchDarkly.Sdk.Server.Interfaces;
+using LaunchDarkly.Sdk.Server.Subsystems;
 
 namespace LaunchDarkly.Sdk.Server.Integrations
 {
@@ -12,9 +12,9 @@ namespace LaunchDarkly.Sdk.Server.Integrations
     /// <para>
     /// Obtain an instance of this class by calling <see cref="Consul.DataStore"/>. After calling its methods
     /// to specify any desired custom settings, wrap it in a <see cref="PersistentDataStoreBuilder"/>
-    /// by calling <see cref="Components.PersistentDataStore(IPersistentDataStoreFactory)"/>, then pass
-    /// the result into the SDK configuration with <see cref="ConfigurationBuilder.DataStore(IDataStoreFactory)"/>.
-    /// You do not need to call <see cref="CreatePersistentDataStore(LdClientContext)"/> yourself to build
+    /// by calling <see cref="Components.PersistentDataStore(IComponentConfigurer{IPersistentDataStoreAsync})"/>, then pass
+    /// the result into the SDK configuration with <see cref="ConfigurationBuilder.DataStore(IComponentConfigurer{IDataStore})"/>.
+    /// You do not need to call <see cref="Build(LdClientContext)"/> yourself to build
     /// the actual data store; that will be done by the SDK.
     /// </para>
     /// <para>
@@ -39,7 +39,8 @@ namespace LaunchDarkly.Sdk.Server.Integrations
     ///         .Build();
     /// </code>
     /// </remarks>
-    public sealed class ConsulDataStoreBuilder : IPersistentDataStoreAsyncFactory
+    public sealed class ConsulDataStoreBuilder : IComponentConfigurer<IPersistentDataStoreAsync>,
+        IDiagnosticDescription
     {
         private ConsulClient _existingClient;
         private List<Action<ConsulClientConfiguration>> _configActions = new List<Action<ConsulClientConfiguration>>();
@@ -123,7 +124,7 @@ namespace LaunchDarkly.Sdk.Server.Integrations
         }
 
         /// <inheritdoc/>
-        public IPersistentDataStoreAsync CreatePersistentDataStore(LdClientContext context)
+        public IPersistentDataStoreAsync Build(LdClientContext context)
         {
             var client = _existingClient;
             if (client is null)
@@ -145,8 +146,12 @@ namespace LaunchDarkly.Sdk.Server.Integrations
                 client,
                 _existingClient != null,
                 _prefix,
-                context.Basic.Logger.SubLogger("DataStore.Consul")
+                context.Logger.SubLogger("DataStore.Consul")
                 );
         }
+
+        /// <inheritdoc/>
+        public LdValue DescribeConfiguration(LdClientContext context) =>
+            LdValue.Of("Consul");
     }
 }

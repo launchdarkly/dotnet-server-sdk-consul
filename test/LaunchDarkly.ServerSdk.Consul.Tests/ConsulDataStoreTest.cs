@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Consul;
 using LaunchDarkly.Logging;
-using LaunchDarkly.Sdk.Server.Interfaces;
+using LaunchDarkly.Sdk.Server.Subsystems;
 using LaunchDarkly.Sdk.Server.SharedTests.DataStore;
 using Xunit;
 using Xunit.Abstractions;
@@ -23,7 +23,7 @@ namespace LaunchDarkly.Sdk.Server.Integrations
 
         public ConsulDataStoreTest(ITestOutputHelper testOutput) : base(testOutput) { }
 
-        private IPersistentDataStoreAsyncFactory MakeStoreFactory(string prefix) =>
+        private IComponentConfigurer<IPersistentDataStoreAsync> MakeStoreFactory(string prefix) =>
             Consul.DataStore().Prefix(prefix);
 
         private async Task ClearAllData(string prefix)
@@ -46,10 +46,9 @@ namespace LaunchDarkly.Sdk.Server.Integrations
         {
             var logCapture = Logs.Capture();
             var logger = logCapture.Logger("BaseLoggerName"); // in real life, the SDK will provide its own base log name
-            var context = new LdClientContext(new BasicConfiguration("", false, logger),
-                LaunchDarkly.Sdk.Server.Configuration.Default(""));
+            var context = new LdClientContext("", null, null, null, logger, false, null);
             using (Consul.DataStore().Address("http://localhost:8500").Prefix("my-prefix")
-                .CreatePersistentDataStore(context))
+                .Build(context))
             {
                 Assert.Collection(logCapture.GetMessages(),
                     m =>
