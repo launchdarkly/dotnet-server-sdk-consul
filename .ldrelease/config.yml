@@ -6,9 +6,11 @@ publications:
 
 branches:
   - name: main
-    description: 3.x - for SDK 7+
+    description: 4.x - for SDK 7+
+  - name: 3.x
+    description: for SDK 6+, with new Consul client
   - name: 2.x
-    description: for SDK 6.x
+    description: for SDK 6+, with old Consul client
   - name: 1.x
     description: for SDK 5.x
 

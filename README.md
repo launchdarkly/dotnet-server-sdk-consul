@@ -6,7 +6,7 @@
 
 This library provides a Consul-backed persistence mechanism (data store) for the [LaunchDarkly server-side .NET SDK](https://github.com/launchdarkly/dotnet-server-sdk), replacing the default in-memory data store. It uses the open-source [Consul.NET](https://www.nuget.org/packages/Consul) package.
 
-For more information, see also: [Using a persistent data store](https://docs.launchdarkly.com/v2.0/docs/using-a-persistent-feature-store).
+For more information, see also: [Using Consul as a persistent feature store](https://docs.launchdarkly.com/sdk/features/storing-data/consul#net-server-side).
 
 Version 3.0.0 and above of this library works with version 7.0.0 and above of the LaunchDarkly .NET SDK. For earlier versions of the SDK, see the changelog for which version of this library to use.
 
@@ -17,7 +17,7 @@ For full usage details and examples, see the [API reference](launchdarkly.github
 This version of the library is built for the following targets:
 
 * .NET Framework 4.6.2: works in .NET Framework of that version or higher.
-* .NET Standard 2.0: works in .NET Core 3.x, .NET 6.x, or in a library targeted to .NET Standard 2.x.
+* .NET Standard 2.0: works in .NET Core 3.1, .NET 6 or higher, or in a library targeted to .NET Standard 2.x.
 
 The .NET build tools should automatically load the most appropriate build of the library for whatever platform your application or library is targeted to.
 
@@ -38,7 +38,7 @@ We encourage pull requests and other contributions from the community. Check out
     * Gradually roll out a feature to an increasing percentage of users, and track the effect that the feature has on key metrics (for instance, how likely is a user to complete a purchase if they have feature A versus feature B?).
     * Turn off a feature that you realize is causing performance problems in production, without needing to re-deploy, or even restart the application with a changed configuration file.
     * Grant access to certain features based on user attributes, like payment plan (eg: users on the ‘gold’ plan get access to more features than users in the ‘silver’ plan). Disable parts of your application to facilitate maintenance, without taking everything offline.
-* LaunchDarkly provides feature flag SDKs for a wide variety of languages and technologies. Check out [our documentation](https://docs.launchdarkly.com/docs) for a complete list.
+* LaunchDarkly provides feature flag SDKs for a wide variety of languages and technologies. Read [our documentation](https://docs.launchdarkly.com/sdk) for a complete list.
 * Explore LaunchDarkly
     * [launchdarkly.com](https://www.launchdarkly.com/ "LaunchDarkly Main Website") for more information
     * [docs.launchdarkly.com](https://docs.launchdarkly.com/  "LaunchDarkly Documentation") for our documentation and SDK reference guides
