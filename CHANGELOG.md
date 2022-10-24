@@ -2,6 +2,11 @@
 
 All notable changes to the LaunchDarkly .NET SDK Consul integration will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org).
 
+## [3.0.0] - 2022-10-24
+This release updates the integration to use the current 1.x stable version of the [Consul.NET](https://www.nuget.org/packages/Consul) client package. Previously, that package had a different maintainer and did not have a stable version.
+
+Because Consul.NET does not support .NET Framework 4.5.2, this integration now has a minimum .NET Framework version of 4.6.1 (which is the reason for the 3.0.0 major version increment in this release). Its functionality is otherwise unchanged.
+
 ## [2.0.0] - 2021-06-09
 This release is for use with versions 6.0.0 and higher of [`LaunchDarkly.ServerSdk`](https://github.com/launchdarkly/dotnet-server-sdk).
 
