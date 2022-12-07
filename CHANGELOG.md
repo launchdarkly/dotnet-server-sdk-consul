@@ -2,6 +2,14 @@
 
 All notable changes to the LaunchDarkly .NET SDK Consul integration will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org).
 
+## [4.0.0] - 2022-12-07
+This release corresponds to the 7.0.0 release of the LaunchDarkly server-side .NET SDK. Any application code that is being updated to use the 7.0.0 SDK, and was using a 3.x version of `LaunchDarkly.ServerSdk.Consul`, should now use a 4.x version instead.
+
+There are no functional differences in the behavior of the Consul integration; the differences are only related to changes in the usage of interface types for configuration in the SDK.
+
+### Changed:
+- In `DataStoreBuilder`, the method `CreatePersistentDataStore` has been renamed to `Build`, corresponding to changes in how the SDK uses interface types for configuration. Application code would not normally reference this method.
+
 ## [3.0.0] - 2022-10-24
 This release updates the integration to use the current 1.x stable version of the [Consul.NET](https://www.nuget.org/packages/Consul) client package. Previously, that package had a different maintainer and did not have a stable version.
 
