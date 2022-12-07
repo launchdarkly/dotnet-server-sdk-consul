@@ -116,7 +116,7 @@
   </h3>
   <a id="LaunchDarkly_Sdk_Server_Integrations_Consul_DataStore_" data-uid="LaunchDarkly.Sdk.Server.Integrations.Consul.DataStore*"></a>
   <h4 id="LaunchDarkly_Sdk_Server_Integrations_Consul_DataStore" data-uid="LaunchDarkly.Sdk.Server.Integrations.Consul.DataStore">DataStore()</h4>
-  <div class="markdown level1 summary"><p>Returns a builder object for creating a Consul-backed data store.</p>
+  <div class="markdown level1 summary"><p>Returns a builder object for creating a Consul-backed persistent data store.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -134,24 +134,39 @@
     <tbody>
       <tr>
         <td><a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html">ConsulDataStoreBuilder</a></td>
-        <td></td>
+        <td><p>a data store configuration object</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 id="LaunchDarkly_Sdk_Server_Integrations_Consul_DataStore_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>This object can be modified with <a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html">ConsulDataStoreBuilder</a> methods for any desired
-custom Consul options. Then, pass it to <span class="xref">LaunchDarkly.Sdk.Server.Components.PersistentDataStore(LaunchDarkly.Sdk.Server.Interfaces.IPersistentDataStoreAsyncFactory)</span>
-and set any desired caching options. Finally, pass the result to <span class="xref">LaunchDarkly.Sdk.Server.ConfigurationBuilder.DataStore(LaunchDarkly.Sdk.Server.Interfaces.IDataStoreFactory)</span>.</p>
-</div>
-  <h5 id="LaunchDarkly_Sdk_Server_Integrations_Consul_DataStore_examples">Examples</h5>
-  <pre><code>    var config = Configuration.Builder(&quot;sdk-key&quot;)
+  <div class="markdown level1 remarks"><p><p>
+You can use methods of the builder to specify any non-default Consul options
+you may want, before passing the builder to
+<span class="xref">LaunchDarkly.Sdk.Server.Components.PersistentDataStore(LaunchDarkly.Sdk.Server.Subsystems.IComponentConfigurer{LaunchDarkly.Sdk.Server.Subsystems.IPersistentDataStore})</span>.
+In this example, the store is configured with only the host address:
+</p></p>
+<pre><code>    var config = Configuration.Builder(&quot;sdk-key&quot;)
+        .DataStore(
+            Components.PersistentDataStore(
+                Consul.DataStore().Address(&quot;http://my-consul-host:8500&quot;)
+            )
+        )
+        .Build();</code></pre>
+<p><p>
+Note that the SDK also has its own options related to data storage that are configured
+at a different level, because they are independent of what database is being used. For
+instance, the builder returned by <span class="xref">LaunchDarkly.Sdk.Server.Components.PersistentDataStore(LaunchDarkly.Sdk.Server.Subsystems.IComponentConfigurer{LaunchDarkly.Sdk.Server.Subsystems.IPersistentDataStore})</span>
+has options for caching:
+</p></p>
+<pre><code>    var config = Configuration.Builder(&quot;sdk-key&quot;)
         .DataStore(
             Components.PersistentDataStore(
                 Consul.DataStore().Address(&quot;http://my-consul-host:8500&quot;)
             ).CacheSeconds(15)
         )
         .Build();</code></pre>
-
+</div>
 </article>
           </div>
           

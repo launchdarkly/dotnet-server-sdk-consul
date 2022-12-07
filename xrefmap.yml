@@ -55,6 +55,18 @@ references:
   commentId: Overload:LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Address
   fullName: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Address
   nameWithType: ConsulDataStoreBuilder.Address
+- uid: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Build(LaunchDarkly.Sdk.Server.Subsystems.LdClientContext)
+  name: Build(LdClientContext)
+  href: api/LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Build_LaunchDarkly_Sdk_Server_Subsystems_LdClientContext_
+  commentId: M:LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Build(LaunchDarkly.Sdk.Server.Subsystems.LdClientContext)
+  fullName: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Build(LaunchDarkly.Sdk.Server.Subsystems.LdClientContext)
+  nameWithType: ConsulDataStoreBuilder.Build(LdClientContext)
+- uid: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Build*
+  name: Build
+  href: api/LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Build_
+  commentId: Overload:LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Build
+  fullName: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Build
+  nameWithType: ConsulDataStoreBuilder.Build
 - uid: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.ConsulConfigChanges(System.Action{Consul.ConsulClientConfiguration})
   name: ConsulConfigChanges(Action<ConsulClientConfiguration>)
   href: api/LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_ConsulConfigChanges_System_Action_Consul_ConsulClientConfiguration__
@@ -70,18 +82,18 @@ references:
   commentId: Overload:LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.ConsulConfigChanges
   fullName: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.ConsulConfigChanges
   nameWithType: ConsulDataStoreBuilder.ConsulConfigChanges
-- uid: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.CreatePersistentDataStore(LaunchDarkly.Sdk.Server.Interfaces.LdClientContext)
-  name: CreatePersistentDataStore(LdClientContext)
-  href: api/LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_CreatePersistentDataStore_LaunchDarkly_Sdk_Server_Interfaces_LdClientContext_
-  commentId: M:LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.CreatePersistentDataStore(LaunchDarkly.Sdk.Server.Interfaces.LdClientContext)
-  fullName: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.CreatePersistentDataStore(LaunchDarkly.Sdk.Server.Interfaces.LdClientContext)
-  nameWithType: ConsulDataStoreBuilder.CreatePersistentDataStore(LdClientContext)
-- uid: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.CreatePersistentDataStore*
-  name: CreatePersistentDataStore
-  href: api/LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_CreatePersistentDataStore_
-  commentId: Overload:LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.CreatePersistentDataStore
-  fullName: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.CreatePersistentDataStore
-  nameWithType: ConsulDataStoreBuilder.CreatePersistentDataStore
+- uid: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.DescribeConfiguration(LaunchDarkly.Sdk.Server.Subsystems.LdClientContext)
+  name: DescribeConfiguration(LdClientContext)
+  href: api/LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_DescribeConfiguration_LaunchDarkly_Sdk_Server_Subsystems_LdClientContext_
+  commentId: M:LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.DescribeConfiguration(LaunchDarkly.Sdk.Server.Subsystems.LdClientContext)
+  fullName: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.DescribeConfiguration(LaunchDarkly.Sdk.Server.Subsystems.LdClientContext)
+  nameWithType: ConsulDataStoreBuilder.DescribeConfiguration(LdClientContext)
+- uid: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.DescribeConfiguration*
+  name: DescribeConfiguration
+  href: api/LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_DescribeConfiguration_
+  commentId: Overload:LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.DescribeConfiguration
+  fullName: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.DescribeConfiguration
+  nameWithType: ConsulDataStoreBuilder.DescribeConfiguration
 - uid: LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.ExistingClient(Consul.ConsulClient)
   name: ExistingClient(ConsulClient)
   href: api/LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_ExistingClient_Consul_ConsulClient_

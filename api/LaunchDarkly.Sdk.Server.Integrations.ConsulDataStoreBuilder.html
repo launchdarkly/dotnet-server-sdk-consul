@@ -83,21 +83,22 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><span class="xref">LaunchDarkly.Sdk.Server.Interfaces.IPersistentDataStoreAsyncFactory</span></div>
+    <div><span class="xref">LaunchDarkly.Sdk.Server.Subsystems.IComponentConfigurer</span>&lt;<span class="xref">LaunchDarkly.Sdk.Server.Subsystems.IPersistentDataStoreAsync</span>&gt;</div>
+    <div><span class="xref">LaunchDarkly.Sdk.Server.Subsystems.IDiagnosticDescription</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.html">LaunchDarkly.Sdk.Server.Integrations</a></h6>
   <h6><strong>Assembly</strong>: LaunchDarkly.ServerSdk.Consul.dll</h6>
   <h5 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class ConsulDataStoreBuilder : Object, IPersistentDataStoreAsyncFactory</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class ConsulDataStoreBuilder : Object, IComponentConfigurer&lt;IPersistentDataStoreAsync&gt;, IDiagnosticDescription</code></pre>
   </div>
   <h5 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p><p>
 Obtain an instance of this class by calling <a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.Consul.html#LaunchDarkly_Sdk_Server_Integrations_Consul_DataStore">DataStore()</a>. After calling its methods
 to specify any desired custom settings, wrap it in a <span class="xref">LaunchDarkly.Sdk.Server.Integrations.PersistentDataStoreBuilder</span>
-by calling <span class="xref">LaunchDarkly.Sdk.Server.Components.PersistentDataStore(LaunchDarkly.Sdk.Server.Interfaces.IPersistentDataStoreFactory)</span>, then pass
-the result into the SDK configuration with <span class="xref">LaunchDarkly.Sdk.Server.ConfigurationBuilder.DataStore(LaunchDarkly.Sdk.Server.Interfaces.IDataStoreFactory)</span>.
-You do not need to call <a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_CreatePersistentDataStore_LaunchDarkly_Sdk_Server_Interfaces_LdClientContext_">CreatePersistentDataStore(LdClientContext)</a> yourself to build
+by calling <span class="xref">LaunchDarkly.Sdk.Server.Components.PersistentDataStore(LaunchDarkly.Sdk.Server.Subsystems.IComponentConfigurer{LaunchDarkly.Sdk.Server.Subsystems.IPersistentDataStoreAsync})</span>, then pass
+the result into the SDK configuration with <span class="xref">LaunchDarkly.Sdk.Server.ConfigurationBuilder.DataStore(LaunchDarkly.Sdk.Server.Subsystems.IComponentConfigurer{LaunchDarkly.Sdk.Server.Subsystems.IDataStore})</span>.
+You do not need to call <a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Build_LaunchDarkly_Sdk_Server_Subsystems_LdClientContext_">Build(LdClientContext)</a> yourself to build
 the actual data store; that will be done by the SDK.
 </p>
 <p>
@@ -216,6 +217,46 @@ Builder calls can be chained, for example:
   <div class="seealso">
       <div><a class="xref" href="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.html#LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Address_System_String_">Address(String)</a></div>
   </div>
+  <a id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Build_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Build*"></a>
+  <h4 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_Build_LaunchDarkly_Sdk_Server_Subsystems_LdClientContext_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.Build(LaunchDarkly.Sdk.Server.Subsystems.LdClientContext)">Build(LdClientContext)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IPersistentDataStoreAsync Build(LdClientContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">LaunchDarkly.Sdk.Server.Subsystems.LdClientContext</span></td>
+        <td><span class="parametername">context</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">LaunchDarkly.Sdk.Server.Subsystems.IPersistentDataStoreAsync</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_ConsulConfigChanges_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.ConsulConfigChanges*"></a>
   <h4 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_ConsulConfigChanges_System_Action_Consul_ConsulClientConfiguration__" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.ConsulConfigChanges(System.Action{Consul.ConsulClientConfiguration})">ConsulConfigChanges(Action&lt;ConsulClientConfiguration&gt;)</h4>
   <div class="markdown level1 summary"><p>Specifies custom steps for configuring the Consul client. Your action may modify the
@@ -260,13 +301,13 @@ Builder calls can be chained, for example:
       </tr>
     </tbody>
   </table>
-  <a id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_CreatePersistentDataStore_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.CreatePersistentDataStore*"></a>
-  <h4 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_CreatePersistentDataStore_LaunchDarkly_Sdk_Server_Interfaces_LdClientContext_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.CreatePersistentDataStore(LaunchDarkly.Sdk.Server.Interfaces.LdClientContext)">CreatePersistentDataStore(LdClientContext)</h4>
+  <a id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_DescribeConfiguration_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.DescribeConfiguration*"></a>
+  <h4 id="LaunchDarkly_Sdk_Server_Integrations_ConsulDataStoreBuilder_DescribeConfiguration_LaunchDarkly_Sdk_Server_Subsystems_LdClientContext_" data-uid="LaunchDarkly.Sdk.Server.Integrations.ConsulDataStoreBuilder.DescribeConfiguration(LaunchDarkly.Sdk.Server.Subsystems.LdClientContext)">DescribeConfiguration(LdClientContext)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IPersistentDataStoreAsync CreatePersistentDataStore(LdClientContext context)</code></pre>
+    <pre><code class="lang-csharp hljs">public LdValue DescribeConfiguration(LdClientContext context)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -279,7 +320,7 @@ Builder calls can be chained, for example:
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">LaunchDarkly.Sdk.Server.Interfaces.LdClientContext</span></td>
+        <td><span class="xref">LaunchDarkly.Sdk.Server.Subsystems.LdClientContext</span></td>
         <td><span class="parametername">context</span></td>
         <td></td>
       </tr>
@@ -295,7 +336,7 @@ Builder calls can be chained, for example:
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">LaunchDarkly.Sdk.Server.Interfaces.IPersistentDataStoreAsync</span></td>
+        <td><span class="xref">LaunchDarkly.Sdk.LdValue</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -405,7 +446,10 @@ different LaunchDarkly environments, to avoid key collisions.</p>
 </div>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">LaunchDarkly.Sdk.Server.Interfaces.IPersistentDataStoreAsyncFactory</span>
+      <span class="xref">LaunchDarkly.Sdk.Server.Subsystems.IComponentConfigurer&lt;&gt;</span>
+  </div>
+  <div>
+      <span class="xref">LaunchDarkly.Sdk.Server.Subsystems.IDiagnosticDescription</span>
   </div>
 </article>
           </div>
