@@ -44,7 +44,7 @@ jobs:
             /production/common/releasing/digicert/client_cert_password = DIGICERT_CLIENT_CERT_PASSWORD,
             /production/common/releasing/digicert/code_signing_cert_sha1_hash = DIGICERT_CODE_SIGNING_CERT_SHA1_HASH,
             /production/common/releasing/nuget/api_key = NUGET_API_KEY'
-          s3_path_pairs: 'launchdarkly-releaser/dotnet/LaunchDarkly.ServerSdk.Consul.snk = LaunchDarkly.ServerSdk.Consul.snk'
+          s3_path_pairs: 'launchdarkly-releaser/dotnet/LaunchDarkly.Consul.snk = LaunchDarkly.Consul.snk'
 
 
       - name: Build Release
