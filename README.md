@@ -1,3 +1,7 @@
+# [DEPRECATED] LaunchDarkly Server-Side SDK for .NET - Consul integration - please use https://github.com/launchdarkly/dotnet-core/tree/main/pkgs/dotnet-server-sdk-consul
+
+Development has moved to [dotnet-core repository](https://github.com/launchdarkly/dotnet-core/tree/main/pkgs/dotnet-server-sdk-consul). This repository remains here to support legacy references to dotnet-server-sdk-consul.
+
 # LaunchDarkly Server-Side SDK for .NET - Consul integration
 
 [![NuGet](https://img.shields.io/nuget/v/LaunchDarkly.ServerSdk.Consul.svg?style=flat-square)](https://www.nuget.org/packages/LaunchDarkly.ServerSdk.Consul/)
